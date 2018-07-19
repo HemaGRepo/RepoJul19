@@ -1,0 +1,33 @@
+
+SQL> CREATE TABLE dept_master3
+  (dno NUMBER
+  CONSTRAINT dpk23 PRIMARY KEY,
+  dname VARCHAR2(10)
+  );
+
+Table created.
+
+SQL> INSERT INTO dept_master3 VALUES(10,'GE');
+
+1 row created.
+
+SQL> INSERT INTO dept_master3 VALUES(20,'ACS');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CREATE TABLE emp_master3
+   (eno NUMBER(5) PRIMARY KEY,
+  name VARCHAR2(10),
+  dno NUMBER(3));
+
+
+SQL> ALTER TABLE emp_master3
+  ADD CONSTRAINT
+  emp_fk_dno2
+  FOREIGN KEY(dno)
+  REFERENCES dept_master3(dno)
+  ON DELETE CASCADE;
