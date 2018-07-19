@@ -1,0 +1,144 @@
+CARTESIAN PRODUCT
+_________________
+
+SELECT empname,emp.deptno,dname
+FROm emp,dept;
+
+SELECT empname,emp.deptno,dname
+FROm emp
+CROSS JOIN
+dept;
+
+
+EQUI JOIN
+________
+
+ SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+ emp,dept
+ WHERE
+ emp.deptno=dept.deptno;
+
+SELECT empname,deptno,dname
+FROM emp
+NATURAL JOIN
+dept;
+
+
+SELECT empname,emp.deptno,dname
+FROM emp
+JOIN dept
+ON(emp.deptno=dept.deptno);
+
+
+SELECT empname,deptno,dname
+FROM emp
+JOIN dept
+USING(deptno,deptno);
+
+OUTER JOIN
+__________
+
+LEFT OUTER JOIN - Right side table ie. dept will be displayed fully
+-----------------
+ SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+ emp,dept
+ WHERE
+ emp.deptno(+)=dept.deptno;
+
+SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+emp
+LEFT OUTER JOIN dept
+ON(emp.deptno=dept.deptno);
+
+SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+emp
+LEFT OUTER JOIN dept
+ON(dept.deptno=emp.deptno);
+
+
+
+
+
+RIGHT OUTER JOIN - Left side table ie. emp will be displayed fully
+-----------------
+ SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+ emp,dept
+ WHERE
+ emp.deptno=dept.deptno(+);
+
+SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+emp
+RIGHT OUTER JOIN dept
+ON(emp.deptno=dept.deptno);
+
+
+FULL OUTER JOIN
+_________________
+SELECT
+ empname,emp.deptno,dname,loc,salary
+ FROM
+emp
+FULL OUTER JOIN dept
+ON(emp.deptno=dept.deptno);
+
+SELF JOIN
+____________
+
+
+SQL> SELECT
+ e1.empno,e1.empname,e1.mgr,e2.empno,e2.empname
+ FROM
+ emp e1, emp e2
+ WHERE
+ e1.mgr=e2.empno;
+
+
+SELECT
+ e1.empno,e1.empname,e1.mgr,e2.empno,e2.empname
+ FROM
+ emp e1
+ JOIN emp e2
+ ON(e1.mgr=e2.empno);
+
+
+
+NON EQUI JOIN
+______________
+
+SELECT 
+empname,salary,grade
+FROM
+emp,grades
+WHERE
+salary>minsal
+AND
+salary<maxsal
+
+SELECT 
+empname,salary,grade
+FROM
+emp
+JOIN grades
+ON(salary>minsal
+AND
+salary<maxsal)
+
+
+
+
+
+
+
+
